@@ -324,7 +324,7 @@ Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
 Set-Alias vscode "C:\Program Files\Microsoft VS Code\Code.exe"
-Set-Alias vsstdio "C:\Program Files\Microsoft VS Code\Code.exe"
+Set-Alias vsstudio "C:\Program Files\Microsoft VS Code\Code.exe"
 
 
 $documents = $home + "\Documents"
