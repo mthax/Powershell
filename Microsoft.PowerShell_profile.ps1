@@ -101,6 +101,12 @@ function winutil {
     iwr -useb https://christitus.com/win | iex
 }
 
+# Open WinUtil
+function ifconfig {
+    ipconfig /all
+}
+
+
 # System Utilities
 function admin {
     if ($args.Count -gt 0) {
