@@ -265,9 +265,17 @@ function pst { Get-Clipboard }
 
 # Enhanced PowerShell Experience
 Set-PSReadLineOption -Colors @{
-    Command = 'Yellow'
-    Parameter = 'Green'
-    String = 'DarkCyan'
+    Type = "DarkCyan"
+    Member = "Gray"
+    String = "DarkGray"
+    Number = "Yellow"
+    Comment = "DarkGreen"
+    Command = "Cyan"
+    Keyword = "Cyan"
+    Operator = "Gray"
+    Variable = "Magenta"
+    Parameter = "Gray"
+    }
 }
 
 $PSROptions = @{
@@ -320,17 +328,44 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
     }
 }
 
+$PSSessionOption = New-PSSessionOption -SkipRevocationCheck -SkipCACheck -SkipCNCheck
+
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
 Set-Alias vscode "C:\Program Files\Microsoft VS Code\Code.exe"
 Set-Alias vsstudio "C:\Program Files\Microsoft VS Code\Code.exe"
 
-
 $documents = $home + "\Documents"
 $desktop = $home + "\Desktop"
 $downloads = $home + "\Downloads"
 $modules = $home + "\Documents\WindowsPowerShell\Modules"
+
+function Write-CpuUsageToHost {
+Get-Counter '\Processor(_Total)\% Processor Time' | ForEach-Object {
+$cpuUsage = [math]::round($_.CounterSamples.CookedValue,1)
+Write-Host "Current CPU Usage: $cpuUsage %"
+}
+}
+function Write-MemoryUsageToHost {
+$memTotal = 15779
+<#     $memTotal = Get-Counter '\NUMA Node Memory(_Total)\Total MBytes' | ForEach-Object {
+        $ramTotal = $_.CounterSamples.CookedValue #/ 1024
+        return $ramTotal
+        } #>
+$memAvailable = Get-Counter '\NUMA Node Memory(_Total)\Available MBytes' | ForEach-Object {
+$ramUsage = $_.CounterSamples.CookedValue #/ 1024
+return $ramUsage
+}
+$memUsed = [math]::round((($memTotal - $memAvailable) / 1024),1)
+#This memTot static saves one second on loadtime...
+#$memUsed = [math]::round((($memTotal - $memAvailable) / 1024),1)
+Write-Host "Current RAM Usage: ${memUsed} GB"
+#return $memUsed
+}
+Write-Host - - -
+Write-CpuUsageToHost
+Write-MemoryUsageToHost
 
 # Help Function
 function Show-Help {
