@@ -101,11 +101,10 @@ function winutil {
     iwr -useb https://christitus.com/win | iex
 }
 
-# Open WinUtil
+# Open Ipconfig
 function ifconfig {
     ipconfig /all
 }
-
 
 # System Utilities
 function admin {
