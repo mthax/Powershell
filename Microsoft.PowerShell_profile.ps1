@@ -346,28 +346,19 @@ Get-Counter '\Processor(_Total)\% Processor Time' | ForEach-Object {
 $cpuUsage = [math]::round($_.CounterSamples.CookedValue,1)
 Write-Host "Current CPU Usage: $cpuUsage %"
 }
-}
 function Write-MemoryUsageToHost {
 $memTotal = 15779
-<#     $memTotal = Get-Counter '\NUMA Node Memory(_Total)\Total MBytes' | ForEach-Object {
-        $ramTotal = $_.CounterSamples.CookedValue #/ 1024
-        return $ramTotal
-        } #>
 $memAvailable = Get-Counter '\NUMA Node Memory(_Total)\Available MBytes' | ForEach-Object {
 $ramUsage = $_.CounterSamples.CookedValue #/ 1024
 return $ramUsage
 }
 $memUsed = [math]::round((($memTotal - $memAvailable) / 1024),1)
-#This memTot static saves one second on loadtime...
-#$memUsed = [math]::round((($memTotal - $memAvailable) / 1024),1)
 Write-Host "Current RAM Usage: ${memUsed} GB"
-#return $memUsed
 }
 Write-Host - - -
 Write-CpuUsageToHost
 Write-MemoryUsageToHost
 
-# Help Function
 function Show-Help {
     @"
 PowerShell Profile Help
