@@ -275,7 +275,6 @@ Set-PSReadLineOption -Colors @{
     Operator = "Gray"
     Variable = "Magenta"
     Parameter = "Gray"
-    }
 }
 
 $PSROptions = @{
@@ -346,6 +345,7 @@ Get-Counter '\Processor(_Total)\% Processor Time' | ForEach-Object {
 $cpuUsage = [math]::round($_.CounterSamples.CookedValue,1)
 Write-Host "Current CPU Usage: $cpuUsage %"
 }
+}
 function Write-MemoryUsageToHost {
 $memTotal = 15779
 $memAvailable = Get-Counter '\NUMA Node Memory(_Total)\Available MBytes' | ForEach-Object {
@@ -354,11 +354,13 @@ return $ramUsage
 }
 $memUsed = [math]::round((($memTotal - $memAvailable) / 1024),1)
 Write-Host "Current RAM Usage: ${memUsed} GB"
+#return $memUsed
 }
 Write-Host - - -
 Write-CpuUsageToHost
 Write-MemoryUsageToHost
 
+# Help Function
 function Show-Help {
     @"
 PowerShell Profile Help
