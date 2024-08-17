@@ -5,12 +5,15 @@ oh-my-posh init pwsh --config 'C:\Program Files (x86)\oh-my-posh\themes\powerlev
 # for `choco` will not function.
 # See https://ch0.co/tab-completion for details.
 #opt-out of telemetry before doing anything, only if PowerShell is run as admin
+# Import Modules and External Profiles
+# Ensure Terminal-Icons module is installed before importing
+#opt-out of telemetry before doing anything, only if PowerShell is run as admin
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
     [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
 }
 
 # Initial GitHub.com connectivity check with 1 second timeout
-$canConnectToGitHub = Test-Connection github.com -Count 1 -Quiet
+$canConnectToGitHub = Test-Connection github.com -Count 1 -Quiet -TimeoutSeconds 1
 
 # Import Modules and External Profiles
 # Ensure Terminal-Icons module is installed before importing
@@ -22,6 +25,7 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
+
 # Check for Profile Updates
 function Update-Profile {
     if (-not $global:canConnectToGitHub) {
@@ -30,7 +34,7 @@ function Update-Profile {
     }
 
     try {
-        $url = "https://raw.githubusercontent.com/mthax/WindowsPowerShell/main/Microsoft.PowerShell_profile.ps1"
+        $url = "https://raw.githubusercontent.com/ChrisTitusTech/powershell-profile/main/Microsoft.PowerShell_profile.ps1"
         $oldhash = Get-FileHash $PROFILE
         Invoke-RestMethod $url -OutFile "$env:temp/Microsoft.PowerShell_profile.ps1"
         $newhash = Get-FileHash "$env:temp/Microsoft.PowerShell_profile.ps1"
@@ -94,13 +98,13 @@ function Test-CommandExists {
 
 # Editor Configuration
 $EDITOR = if (Test-CommandExists nvim) { 'nvim' }
-          elseif (Test-CommandExists pvim) { 'pvim' }
-          elseif (Test-CommandExists vim) { 'vim' }
-          elseif (Test-CommandExists vi) { 'vi' }
-          elseif (Test-CommandExists code) { 'code' }
-          elseif (Test-CommandExists notepad++) { 'notepad++' }
-          elseif (Test-CommandExists sublime_text) { 'sublime_text' }
-          else { 'notepad' }
+elseif (Test-CommandExists pvim) { 'pvim' }
+elseif (Test-CommandExists vim) { 'vim' }
+elseif (Test-CommandExists vi) { 'vi' }
+elseif (Test-CommandExists code) { 'code' }
+elseif (Test-CommandExists notepad++) { 'notepad++' }
+elseif (Test-CommandExists sublime_text) { 'sublime_text' }
+else { 'notepad' }
 Set-Alias -Name vim -Value $EDITOR
 
 function Edit-Profile {
@@ -118,7 +122,7 @@ function Get-PubIP { (Invoke-WebRequest http://ifconfig.me/ip).Content }
 
 # Open WinUtil
 function winutil {
-	iwr -useb https://christitus.com/win | iex
+    iwr -useb https://christitus.com/win | iex
 }
 
 # System Utilities
@@ -156,14 +160,24 @@ function hb {
         Write-Error "No file path specified."
         return
     }
-    
+
     $FilePath = $args[0]
-    
+
     if (Test-Path $FilePath) {
         $Content = Get-Content $FilePath -Raw
     } else {
         Write-Error "File path does not exist."
         return
+    }
+
+    $uri = "http://bin.christitus.com/documents"
+    try {
+        $response = Invoke-RestMethod -Uri $uri -Method Post -Body $Content -ErrorAction Stop
+        $hasteKey = $response.key
+        $url = "http://bin.christitus.com/$hasteKey"
+        Write-Output $url
+    } catch {
+        Write-Error "Failed to upload the document. Error: $_"
     }
 }
 function grep($regex, $dir) {
@@ -199,13 +213,13 @@ function pgrep($name) {
 }
 
 function head {
-  param($Path, $n = 10)
-  Get-Content $Path -Head $n
+    param($Path, $n = 10)
+    Get-Content $Path -Head $n
 }
 
 function tail {
-  param($Path, $n = 10, [switch]$f = $false)
-  Get-Content $Path -Tail $n -Wait:$f
+    param($Path, $n = 10, [switch]$f = $false)
+    Get-Content $Path -Tail $n -Wait:$f
 }
 
 # Quick File Creation
@@ -259,8 +273,8 @@ function sysinfo { Get-ComputerInfo }
 
 # Networking Utilities
 function flushdns {
-	Clear-DnsClientCache
-	Write-Host "DNS has been flushed"
+    Clear-DnsClientCache
+    Write-Host "DNS has been flushed"
 }
 
 # Clipboard Utilities
@@ -278,19 +292,21 @@ Set-PSReadLineOption -Colors @{
 $PSROptions = @{
     ContinuationPrompt = '  '
     Colors             = @{
-    Parameter          = $PSStyle.Foreground.Magenta
-    Selection          = $PSStyle.Background.Black
-    InLinePrediction   = $PSStyle.Foreground.BrightYellow + $PSStyle.Background.BrightBlack
+        Parameter          = $PSStyle.Foreground.Magenta
+        Selection          = $PSStyle.Background.Black
+        InLinePrediction   = $PSStyle.Foreground.BrightYellow + $PSStyle.Background.BrightBlack
     }
 }
 Set-PSReadLineOption @PSROptions
+Set-PSReadLineKeyHandler -Chord 'Ctrl+f' -Function ForwardWord
+Set-PSReadLineKeyHandler -Chord 'Enter' -Function ValidateAndAcceptLine
 
 $scriptblock = {
     param($wordToComplete, $commandAst, $cursorPosition)
     dotnet complete --position $cursorPosition $commandAst.ToString() |
-        ForEach-Object {
-            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-        }
+            ForEach-Object {
+                [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+            }
 }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock $scriptblock
 
