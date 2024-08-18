@@ -89,7 +89,7 @@ else { 'notepad' }
 Set-Alias -Name vim -Value $EDITOR
 
 function Edit-Profile {
-    vim $PROFILE.CurrentUserAllHosts
+    code $PROFILE.CurrentUserAllHosts
 }
 function touch($file) { "" | Out-File $file -Encoding ASCII }
 function ff($name) {
@@ -154,16 +154,6 @@ function hb {
     } else {
         Write-Error "File path does not exist."
         return
-    }
-
-    $uri = "http://bin.christitus.com/documents"
-    try {
-        $response = Invoke-RestMethod -Uri $uri -Method Post -Body $Content -ErrorAction Stop
-        $hasteKey = $response.key
-        $url = "http://bin.christitus.com/$hasteKey"
-        Write-Output $url
-    } catch {
-        Write-Error "Failed to upload the document. Error: $_"
     }
 }
 function grep($regex, $dir) {
@@ -267,6 +257,12 @@ function flushdns {
 function cpy { Set-Clipboard $args[0] }
 
 function pst { Get-Clipboard }
+function find-file($name) {
+    Get-ChildItem -recurse -filter "*${name}*" -ErrorAction SilentlyContinue | ForEach-Object {
+        $place_path = $_.directory
+        Write-Output "${place_path}\${_}"
+    }
+}
 
 # Enhanced PowerShell Experience
 Set-PSReadLineOption -Colors @{
@@ -389,6 +385,46 @@ function admin
 # with elevated rights.
 Set-Alias -Name su -Value admin
 Set-Alias -Name sudo -Value admin
+
+Remove-Variable identity
+Remove-Variable principal
+
+Function Test-CommandExists
+{
+    Param ($command)
+    $oldPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'SilentlyContinue'
+    try {if(Get-Command $command){RETURN $true}}
+    Catch {Write-Host "$command does not exist"; RETURN $false}
+    Finally {$ErrorActionPreference=$oldPreference}
+}
+
+if (Test-CommandExists nvim) {
+    $EDITOR='nvim'
+} elseif (Test-CommandExists pvim) {
+    $EDITOR='pvim'
+} elseif (Test-CommandExists vim) {
+    $EDITOR='vim'
+} elseif (Test-CommandExists vi) {
+    $EDITOR='vi'
+} elseif (Test-CommandExists code) {
+    #VS Code
+    $EDITOR='code'
+} elseif (Test-CommandExists npp) {
+    #fallback to notepad since it exists on every windows machine
+    $EDITOR='vscode'
+}
+Set-Alias -Name vscode -Value $EDITOR
+
+# Import the Chocolatey Profile that contains the necessary code to enable
+# tab-completions to function for `choco`.
+# Be aware that if you are missing these lines from your profile, tab completion
+# for `choco` will not function.
+# See https://ch0.co/tab-completion for details.
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+    Import-Module "$ChocolateyProfile"
+}
 
 # Help Function
 function Show-Help {
