@@ -377,11 +377,11 @@ function admin
     if ($args.Count -gt 0)
     {
         $argList = "& '" + $args + "'"
-        Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $argList
+        Start-Process "$psHome\pwsh.exe" -Verb runAs -ArgumentList $argList
     }
     else
     {
-        Start-Process "$psHome\powershell.exe" -Verb runAs
+        Start-Process "$psHome\pwsh.exe" -Verb runAs
     }
 }
 
