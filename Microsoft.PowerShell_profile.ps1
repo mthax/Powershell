@@ -1,3 +1,5 @@
+Import-Module posh-git
+Import-Module oh-my-posh
 oh-my-posh init pwsh --config 'C:\Program Files (x86)\oh-my-posh\themes\powerlevel10k_rainbow.omp.json' | Invoke-Expression
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
