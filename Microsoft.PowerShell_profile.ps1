@@ -498,6 +498,29 @@ Use 'Show-Help' to display this help message.
 }
 Write-Host "Use 'Show-Help' to display help"
 
+# Help Function
+function Show-Command {
+    @"
+PowerShell User Command Overview
+================================
+
+Hugo Commands
+=============
+
+hugo-local - Runs a local Hugo Server to develop / write a new page/site
+
+site-update - Updates all modules for a site
+
+Chocolatey
+==========
+
+sys-upgrade - Upgrade the Apps on your System
+
+
+"@
+}
+Write-Host "Use 'Show-Commands' to display commands"
+
 # If so and the current host is a command line, then change to red color
 # as warning to user that they are operating in an elevated context
 # Useful shortcuts for traversing directories
