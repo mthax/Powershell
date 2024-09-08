@@ -1,0 +1,138 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">RunAsUser</S>
+      <Version N="Version">2.4.0</Version>
+      <S N="Type">Module</S>
+      <S N="Description">This module allows you to execute scripts under the current user while running as SYSTEM using impersonation.</S>
+      <S N="Author">Kelvin Tegelaar - Kelvin@limenetworks.nl</S>
+      <S N="CompanyName">Lime-TeGek</S>
+      <S N="Copyright">(c) 2020 Kelvin Tegelaar - Kelvin@CyberDrain.com All rights reserved.</S>
+      <DT N="PublishedDate">2022-12-14T08:36:31+01:00</DT>
+      <Obj N="InstalledDate" RefId="1">
+        <DT>2024-09-03T04:28:17.5321208+02:00</DT>
+        <MS>
+          <Obj N="DisplayHint" RefId="2">
+            <TN RefId="1">
+              <T>Microsoft.PowerShell.Commands.DisplayHintType</T>
+              <T>System.Enum</T>
+              <T>System.ValueType</T>
+              <T>System.Object</T>
+            </TN>
+            <ToString>DateTime</ToString>
+            <I32>2</I32>
+          </Obj>
+        </MS>
+      </Obj>
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://github.com/KelvinTegelaar/RunAsUser/blob/master/LICENSE</URI>
+      <URI N="ProjectUri">https://github.com/KelvinTegelaar/RunAsUser</URI>
+      <Nil N="IconUri" />
+      <Obj N="Tags" RefId="3">
+        <TN RefId="2">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>RMM</S>
+          <S>Invoke-AsCurrentUser</S>
+          <S>CyberDrain</S>
+          <S>PSModule</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="4">
+        <TN RefId="3">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">DscResource</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="2" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="2" />
+              <LST>
+                <S>Invoke-AsCurrentUser</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="5" />
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="7">
+              <TNRef RefId="2" />
+              <LST>
+                <S>Invoke-AsCurrentUser</S>
+              </LST>
+            </Obj>
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <S N="ReleaseNotes">Version 1.0 allows you to run scripts as the current user. Version 1.5 has had a near-complete rewrite of the C# code, adding functionality to support elevated sessions. 1.5.1 added support for waiting for a process to finish. 1.6 added the "UseWindowsPowerShell" switch, to enforce the usage of windows PowerShell. Version 1.8 introduce the parameter -NonElevatedSession to create sessions without admin token. Version 1.9 introduced the option to have a visble PowerShell window.</S>
+      <Obj N="Dependencies" RefId="8">
+        <TNRef RefId="2" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="9">
+        <TN RefId="4">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">(c) 2020 Kelvin Tegelaar - Kelvin@CyberDrain.com All rights reserved.</S>
+          <S N="description">This module allows you to execute scripts under the current user while running as SYSTEM using impersonation.</S>
+          <S N="requireLicenseAcceptance">False</S>
+          <S N="releaseNotes">Version 1.0 allows you to run scripts as the current user. Version 1.5 has had a near-complete rewrite of the C# code, adding functionality to support elevated sessions. 1.5.1 added support for waiting for a process to finish. 1.6 added the "UseWindowsPowerShell" switch, to enforce the usage of windows PowerShell. Version 1.8 introduce the parameter -NonElevatedSession to create sessions without admin token. Version 1.9 introduced the option to have a visble PowerShell window.</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">58644811</S>
+          <S N="downloadCount">88997926</S>
+          <S N="packageSize">257831</S>
+          <S N="published">14.12.2022 08:36:31 +01:00</S>
+          <S N="created">14.12.2022 08:36:31 +01:00</S>
+          <S N="lastUpdated">03.09.2024 02:20:00 +02:00</S>
+          <S N="tags">RMM Invoke-AsCurrentUser CyberDrain PSModule</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2024-09-03T02:20:00Z</S>
+          <S N="NormalizedVersion">2.4.0</S>
+          <S N="Authors">Kelvin Tegelaar - Kelvin@limenetworks.nl</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">RunAsUser.nuspec|.git\objects\7f\b896a0433d5254ef970ffb118e0dc19f6898f8|.git\objects\93\c9953119df8c728c6ab1219fc99f6b75aea65c|.git\objects\9f\49ef6fc8019a3fcc0cf0d043e5b6009956234d|.git\objects\a9\d7eab4b1a11f1029b994c8f2ffdf97c8dc626b|.git\objects\ba\619735bed38fddbf1a19a1656818bfb18b4cd4|.git\objects\d5\41cbbe003fccd38301c1801dbf937be7d618df|.git\objects\e7\4f4ba2a246d7918a56e4e6324fcbe9274ade33|.git\objects\f3\8ae4efddb255e5145dda18fbe3cea4c72d8da7|LICENSE|.git\FETCH_HEAD-XPSK-13|.git\FETCH_HEAD-XPSK-7|.git\hooks\pre-push.sample|.git\objects\03\5a720195c8684046dbff937bb01b3936bb3fd5|.git\objects\0b\d8bc71a58cf84de21d546ad2692b70980ea1e2|.git\objects\21\7d84342d5a4e0fdb50cf4c059dcbf0be289371|.git\objects\2f\aa336df0a57e4e532ee581d9a98814d4adc3e3|.git\objects\3d\567ed80e29f05eb80afa9dc1f13391c8ece50b|.git\objects\4f\de84514fe42870971856ff2a63b9646b81728b|.git\objects\64\6ff302fe0adb3c83e92e46676cb91ad451ae34|.git\objects\75\37ecd39f7baa24891956b34509fc582e813065|.git\objects\81\0e5f446ea489bbca3f12309ac8c74a7eb05917|.git\objects\95\3b93d586c2389a0634e12b6014d87e02056c6c|.git\objects\a1\ede50e604b51ec9fd44a54c0b9332762c27b2d|.git\objects\ab\784708cf3b043e6676fbf572721671f05bd341|.git\objects\bc\1dd5db6ee472d7928236e79bf798f7dd1c5da2|.git\objects\d6\14e2ee213c22cd56a7ff7b7ee2b54eca99e80c|.git\objects\ea\5bbd24bbf4e37b15cecdcd8489a98a251482c8|.git\objects\f4\a7e2610876c44ff4c7a3eedbe2f54c7c018d4f|README.md|.git\FETCH_HEAD-XPSK-14|.git\FETCH_HEAD-XPSK-8|.git\hooks\pre-rebase.sample|.git\objects\03\5fd183eb62b6cd053e67fadd26cd63b69d03bc|.git\objects\0c\275ffcf1bac39016867a607cdfdad42a54de90|.git\objects\21\84fc9d781534dde91ab723fd2aa0e4676ec53f|.git\objects\30\55db189e032b025da77b79b044a2a751f58ca8|.git\objects\3d\f667a01f0a0fe46666751e61675b241df43e28|.git\objects\51\aa6a4b2a7ae542fbec7c70e71c7413780c645b|.git\objects\69\69963d28397f285504d6dfa5983d387e87973f|.git\objects\76\94f662f9ea0cb1b331ac6b61af5af512342974|.git\objects\82\9c41557cade3cf44f53727f7ed9c576a387d18|.git\objects\97\0b57d8ba273002f4fabcb701e8abe9f291ce12|.git\objects\a3\16ad4a8f5cf6615cbe2d9c35288b1a4cae6ba0|.git\objects\ac\544288a428395a625c36fd29c84423483d3575|.git\objects\bd\7c9c617f42c8359d66814dc2da8e1741881283|.git\objects\d8\8d1260c1ef695814928b71305afc5819dc689d|.git\objects\ec\4de64e5b32fab636ac4bec939f4487930cfe45|.git\objects\f4\ccd331479e565cef188bfee0bec2757bf3f779|.git\FETCH_HEAD-XPSK-15|.git\FETCH_HEAD-XPSK-9|.git\hooks\pre-receive.sample|.git\objects\03\ed69b3f0c655b32915d6199a97710759b510ff|.git\objects\0c\7c83a4194023dda0048b5c7616846beff56952|.git\objects\21\e3451cceab6b6cbe10b565ad6af79b7e15400f|.git\objects\31\71b935e96276d49093886985af5903e4a26eca|.git\objects\3d\fb115c3010b321f249a58f2f9b6641e36113b1|.git\objects\54\92def87c7da1689b8e393177eeedf8a560de85|.git\objects\6a\8e03fed690a87c9d04f929ebed40de2abc9cb7|.git\objects\77\3c7367eb3746cb50787ef76f74a00e12b5c2ea|.git\objects\83\4db9f354035b0961dbe3bfaed04bf1cc2fb824|.git\objects\97\7ed7b9813cb0f78dbbecfc5adb82b0e85b606e|.git\objects\a3\8881bf7859eb6cc3dd6a47fbec04e4594816e3|.git\objects\af\2c08670bc034d5a161f60a7814aa87ca95a344|.git\objects\bd\fe9f58c1564a0236fa25de6b32d8c1eb93e951|.git\objects\da\c45d204de5ca62049a730c60030c6e062357ed|.git\objects\ee\1219b021c6b0e16580e2d0bcfe71ce02637524|.git\objects\f6\ccdbbe8eff7e83858b95af20b31eca4a3ccc86|RunAsUser.psd1|.git\FETCH_HEAD-XPSK-16|.git\HEAD|.git\hooks\prepare-commit-msg.sample|.git\objects\05\bfeaecad5a2f900b427cecd4e4a01958bd499c|.git\objects\0e\f469ad2e18a0a57cf9a12396810009837002aa|.git\objects\21\ec372ddb3743000ba6ce8d7c3bd5988b082105|.git\objects\31\f48e5e5a60e86b33bcbe2a4dac16dc77d57d7b|.git\objects\3f\7a25513f5a1c0e5dccb79d89f280bf910c71ad|.git\objects\57\b05cb156fdcbe738a4e06e38d6c866f839b35e|.git\objects\6b\730a14431e065b5c3fe42efdd3000856ae94b3|.git\objects\77\bb909736d3583808e16559131dcded05fbb420|.git\objects\83\c20b1da76ba1675a3faddc423d10643bb68e26|.git\objects\97\c9ab6b29ae6f3034704c893080f5f018d3a4aa|.git\objects\a3\aec7831040acb6ce00de36505c33d254895043|.git\objects\b0\e906e9e90de87566a0dc15d31d18ecd3d22174|.git\objects\c1\dcae281765ccfb9894931832ce6b6260914087|.git\objects\db\4a1168e8de901a0b063db22f84ce97194b03a2|.git\objects\ef\7cff96b03bfde91eff1047c9d44c04c6831ca7|.git\objects\f7\ce024710fb961e9d2675b96d8150eb43e2b8b2|runasuser.psm1|.git\FETCH_HEAD-XPSK-17|.git\index|.git\hooks\update.sample|.git\objects\06\224d1de6ca9eddd50ccd0e9ee2c117797f9e3c|.git\objects\0f\9e5f4d6464547c90c2c623c651f687a44cfe4f|.git\objects\21\ed790063ab9382e2c8c8ce1b46161444b8ecb0|.git\objects\34\28b0f61f7b7c6acd37332d0989490edc0be051|.git\objects\3f\9cb1533b33d182cd4c760489d3f9543ad08959|.git\objects\57\dc080ad434fc800545d9355acffdd9f96a9816|.git\objects\6b\745e3ceb90d0b1b518c7196ce9acc800eb84ce|.git\objects\78\5ae6f4209d185837ee657e098c06f55802e62d|.git\objects\83\fc3c331e6cd9692105fe41f356b80553715f4a|.git\objects\98\26866c57a489d3c9a58b1ba907d1c512758086|.git\objects\a5\61c2a3ce94e5db4371d1ff66dce0cbf124ae1a|.git\objects\b1\12467027f1a3e039b7644a75a4d8fa897fb092|.git\objects\c7\e5d057cfebdd4961ce62a203c1b2bc075caa3a|.git\objects\db\d97280fd0db02eba00bd9c8086c39110b967da|.git\objects\f0\0c1a12cefab45f13d18f6726523c41005557a5|.git\objects\ff\fb8e5b847ed23a85a9bb3cd91a59d9ee149949|.git\COMMIT_EDITMSG|.git\FETCH_HEAD-XPSK-18|.git\ORIG_HEAD|.git\info\exclude|.git\objects\07\0010fe61fc1ab8138e4af83ad85b17ea1ea734|.git\objects\11\53d0b6d68548a7f3bdf8bdc03c4907035b0225|.git\objects\25\f6c4788e46afcd6f4c49b9c447766244cc1533|.git\objects\34\c7123f6032c15438eabafb9123d58389cc3aa2|.git\objects\41\6630ec02415c65fecca03853c3302bffb710ab|.git\objects\58\f6ba83f4b5a469d7a235088c664f1f39c5fd19|.git\objects\6c\595d24442d75e7f7aca28a651e0a4a0b717d05|.git\objects\79\03ca4eb3ded99e3cff4da0825aa35792b75655|.git\objects\84\4d0d8166a467feaf2bbf32fe72876f6d922a4a|.git\objects\99\a451102207b2834ca93ed0edb99a319fd9ea3c|.git\objects\a5\dd485645e7c726a5fa5f18d2a55a8eb72cd466|.git\objects\b2\adb51927e344d6752ddb22eee9b5d337ea1f03|.git\objects\ca\873de447dc23227a9ebe0e6f66b1c008d278c9|.git\objects\df\2a7189ef9973c5a9bffa83dadc6d57e8482924|.git\objects\f1\4314f631c6442ecfe8b723e5678b24a8e3675b|.git\refs\heads\beta|.git\config|.git\FETCH_HEAD-XPSK-19|.git\hooks\applypatch-msg.sample|.git\logs\HEAD|.git\objects\07\a09e04fd679115dcfaa0d440869164fd49488f|.git\objects\13\094d356910b07a0500f3c081424f707dba5f1e|.git\objects\27\0253e3a517f0c337eb5aded8e60c6a0205ef80|.git\objects\38\89e9efd230b7d0f1f095397559167cf37b39d5|.git\objects\43\842593d0b81000624b02f1c45e319be9d29d90|.git\objects\59\dd942291fac83af1555ddf124aabe91467df89|.git\objects\6f\48e92d92cd1095c5d9db414989ef51e0bd4f4e|.git\objects\79\c1e27ad1109bab68a1ffc1994a77032e6a2769|.git\objects\86\468995953c490d7a2deae0f4add7ace4ad73b9|.git\objects\9a\ce6460ed391f4590ccfad27c64f755c6dca240|.git\objects\a5\e3811f17306f33d8fa2b997fbc7b20e0700183|.git\objects\b3\33d1f6169ec8fa31aaf0d8c6831a86b8e21e24|.git\objects\cb\f9c8b7504f7672ce05c90377e3720431088f91|.git\objects\df\a8c4170a3da69100059c0a8cbb6c5923b3d5f7|.git\objects\f1\5a78c1c4d57d28f76a66da8b3457bf58bef1fa|.git\refs\heads\master|.git\description|.git\FETCH_HEAD-XPSK-2|.git\hooks\commit-msg.sample|.git\logs\refs\heads\beta|.git\objects\07\eada8af17e28e426163b60606035d38afbf3ed|.git\objects\15\197021c20ac4a38b031189509d32c818a1f03e|.git\objects\27\e2dd29eae7e7cf734861f1fdc55a2b8d33ff32|.git\objects\39\77d331cd4d9e5093f56d1bbd551aa66f00b51f|.git\objects\44\380b2e9b61d249f9ef756c3ec91e1ca6709b96|.git\objects\5a\95e534ef54f52a59f684f17c9cfb2a73e055ef|.git\objects\72\0f4d0ee63dc67c81ee54cf3ff7e689b3f6493f|.git\objects\7a\751e09e50a841b244359fb3de146bef88fac94|.git\objects\88\d5d24cb5ef8435486f079c00611e937919b8ce|.git\objects\9c\9d7ba3a439e7d41e1e90fe638c65da355cd6d2|.git\objects\a6\a03a1ceb7fc1cc17f09824e20c75fe81ecacdc|.git\objects\b4\833c1b02670d0d871cf907912ae35fd5264d40|.git\objects\cc\61df95e23513dfe9f40eeaf77481661160b74b|.git\objects\e0\a28d11262dd0740f64408869a0257f6dd29412|.git\objects\f1\6a86f7224c47dac078c01d4c66d8de7b2afffb|.git\refs\remotes\RunasUSer\beta|.git\FETCH_HEAD|.git\FETCH_HEAD-XPSK-20|.git\hooks\fsmonitor-watchman.sample|.git\logs\refs\heads\master|.git\objects\08\05fbf43ff700c251c54dbe337ec5d62c085d59|.git\objects\15\525a5fa296f2cf556575f0485944bd00c46650|.git\objects\29\e292a512328e797e486616c40524ae0d4e74b2|.git\objects\39\ddefe0cf681891fb26b914a15f27561ff1353d|.git\objects\48\1135f825a8a7d4ea990451dc558f9149d8e389|.git\objects\5c\c877f89b7a20f882a438e0a0571a54d83ae0c1|.git\objects\72\89d18815a8894d4339b34c25aae8892bb364c8|.git\objects\7a\eb76b9d4f4f2daabb82e872b5903f35bdc569a|.git\objects\89\66ab3f1820fa509c9a94c9462019dbccd82b32|.git\objects\9d\25f9dbc393e84f5c9f9e11bc92561dd0156b47|.git\objects\a6\bcfbed981b15aebe94424c84d7279ba914c847|.git\objects\b6\223949e5f2ed2bef9fc366a8a71c05a1632038|.git\objects\d0\08b8cd344ee3ada6ae3edd406d20f72085a1e1|.git\objects\e1\afc3437bf500a7d6a9943a18d2de6a0aa68ee7|.git\objects\f1\ad142b1f6b78ea6357734d53167c250d4dc1d4|.git\refs\remotes\RunasUSer\master|.git\FETCH_HEAD-XPSK|.git\FETCH_HEAD-XPSK-3|.git\hooks\post-update.sample|.git\logs\refs\remotes\RunasUSer\beta|.git\objects\08\7cd0319c6041871422995d30947459cbe431a0|.git\objects\16\012d5134922e9a894f494c04ed6a7b84033426|.git\objects\2b\c4048c7644ed8970d9858fa6be9d8cccc3a464|.git\objects\3a\d226584244d134e4fb9fc6e662ddf16ea88517|.git\objects\4a\91e3a45e441432e0305e2b6c46f89101bc5930|.git\objects\5d\1ec17d8c84de927b00ad9c4ea64025ce9155bd|.git\objects\72\9342175a334f0e1113943bc209381a74e419d7|.git\objects\7c\247d9ca44b661c5ecc2e5d7066d6b5f1bfd742|.git\objects\89\b4963b5d6db1814e05f2c8f6d8e8bafbb9c9d2|.git\objects\9d\c9e05c7af8a517c020be76708b01f0dc082b13|.git\objects\a8\4b0957f42e89c0a7674c94979d871bc497b39c|.git\objects\b6\8310a6de0851ee9e0efb3a0b69a2da1ec4ea05|.git\objects\d0\57205e35aa6c1d5ddb13ad92186f5d4d00980f|.git\objects\e1\ce44b0e68986b0da1f5aa73bef5d35ba2f824d|.git\objects\f2\c66e1e100fa954176a88449ca07befa131a08c|.github\FUNDING.yml|.git\FETCH_HEAD-XPSK-10|.git\FETCH_HEAD-XPSK-4|.git\hooks\pre-applypatch.sample|.git\logs\refs\remotes\RunasUSer\master|.git\objects\09\18840d7eeb5d8eb80a1f433fb9ba29ad1f6c45|.git\objects\1a\1cd872d9e051a42f89e22b69570187016a2022|.git\objects\2e\8679a304b03db5dc501a9ab85a3e078e18e977|.git\objects\3c\1dc3a57c26f258327aefbd1b56b8dffbee86f6|.git\objects\4b\0176c04f171e4a7704f67a45f078d22ef2bf3e|.git\objects\5f\297892c061114bf3a37ee78c34324af73dfcd0|.git\objects\72\f9db5054a956c462cb5bda9b68f24fd4c3b090|.git\objects\7c\469736bbb8d3a047d745e519c5d70e46ba67e1|.git\objects\8e\fe45eaeb098e804be84eeb2675974184af2300|.git\objects\9e\245b0dd2955686d74ebb26ae61f883920d2f86|.git\objects\a9\5fa7e95e4bd8f25d7c23e8ac8ebc459ff5913d|.git\objects\b7\209988dd9fb888a0db9890fad0a32cbc5aa5c6|.git\objects\d2\f7f6d4c1df82e06e1ec48469805275ed464024|.git\objects\e4\5ee6629b6744b6faf49900e3123cf6dbc6753b|.git\objects\f3\394b557eeeaf94d16e5f672ef787e7cc6a4290|Public\Invoke-AsCurrentUser.ps1|.git\FETCH_HEAD-XPSK-11|.git\FETCH_HEAD-XPSK-5|.git\hooks\pre-commit.sample|.git\objects\01\254859f35fe3a5a205ed8bab825eca16fe39a9|.git\objects\09\4ad5af725f56828a96bc4ad5a3654ab62b251a|.git\objects\1c\faa0c7dc34ac369d9ec7761b16f6abde2b729d|.git\objects\2f\69fde29a173411bebd2fbcfe965f4b035892ce|.git\objects\3c\234736d8807560e4eb18128e97e4b1440e41e4|.git\objects\4b\ef8893204471c9ca31d7dc90459c419bbc3bfa|.git\objects\60\20acc4a6d1c2afc39e5a17cafac9398079fc4f|.git\objects\73\e298453434d023860d1a0bfb58de857ede86d3|.git\objects\7d\a0b10fe0a981732388011f67b9344c36599210|.git\objects\92\0a2b259ef7ad32abf06c10ece3bb276ba16618|.git\objects\9f\08c17795245ea758268ad97ef2a93609feb987|.git\objects\a9\78b426cc9f1b1743c8484abdbc180bbd2258a4|.git\objects\b8\47ff9778f507c881dfe358da0f9736950cac2f|.git\objects\d5\27b5115a00ea333f159e11683257dabf24e20b|.git\objects\e5\689502c38dccaec7efce22f4d5cdb62ee58158|.git\FETCH_HEAD-XPSK-12|.git\FETCH_HEAD-XPSK-6|.git\hooks\pre-merge-commit.sample|.git\objects\02\87291eb4a2b6b4275e2ddde7f9390d885c4ef3|.git\objects\0a\1116f0c230d057e37029ed9576ac97c28929d8|.git\objects\1d\51564ec43928a8012bd8453ffe722b645c2820|.git\objects\2f\7d09cb729bfcf2c2ae66122901ee5505cb8949|.git\objects\3d\0fa2a4869dfe78ef5a8883d05a96076fbf7cc7|.git\objects\4e\3472a04dc073271c91af6c4ec066a728261156|.git\objects\62\65373770227d84cd4619da73498ed45453a015|.git\objects\75\3516da853abb08b91f79d3802f05b963fe663b|.git\objects\7f\14e5e454b1a321c30d566735b5c9f1595ec0c3</S>
+          <S N="Functions">Invoke-AsCurrentUser</S>
+          <S N="GUID">2476a019-6cac-4672-993d-ad935d756313</S>
+          <S N="PowerShellVersion">5.0</S>
+          <S N="CompanyName">CyberDrain.com</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">C:\Users\mthal\OneDrive\Dokumente\PowerShell\Modules\RunAsUser\2.4.0</S>
+    </MS>
+  </Obj>
+</Objs>
