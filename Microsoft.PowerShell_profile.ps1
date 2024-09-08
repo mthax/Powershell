@@ -504,17 +504,28 @@ function Show-Commands {
 PowerShell User Command Overview
 ================================
 
-Hugo Commands
-=============
+        Hugo Commands
+================================
 
 hugo-local - Runs a local Hugo Server to develop / write a new page/site
 
 site-update - Updates all modules for a site
 
-Chocolatey
-==========
+         Chocolatey
+===============================
 
 sys-upgrade - Upgrade the Apps on your System
+
+         Komprimieren
+==============================
+
+compact-os - Komprimiert das Betriebssystem
+
+compact-folder - Komprimiert Ordnerinhalt mitsammt Unterordner
+
+            DISM
+==============================
+
 
 
 "@
@@ -545,7 +556,14 @@ function dirs
     }
 }
 
-# Work on local Hugo Site
+function compact-folder {
+    compact /c /s /a /i /exe:xpress16k
+}
+
+function compact-os {
+    compact.exe /CompactOS:always
+}
+
 function hugo-local {
     hugo server --logLevel info --renderToMemory --navigateToChanged --disableFastRender -D -F --gc
 }
