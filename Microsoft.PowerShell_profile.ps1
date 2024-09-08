@@ -409,11 +409,37 @@ if (Test-Path($ChocolateyProfile)) {
     Import-Module "$ChocolateyProfile"
 }
 
-# Help Function
-function Show-Help {
+# Commands Function
+function Show-Commands {
     @"
-PowerShell Profile Help
-=======================
+PowerShell User Command Overview
+================================
+
+        Hugo Commands
+================================
+
+hugo-local - Runs a local Hugo Server to develop / write a new page/site
+
+site-update - Updates all modules for a site
+
+         Chocolatey
+===============================
+
+sys-upgrade - Upgrade the Apps on your System
+
+         Komprimieren
+==============================
+
+compact-os - Komprimiert das Betriebssystem
+
+compact-folder - Komprimiert Ordnerinhalt mitsammt Unterordner
+
+            DISM
+==============================
+
+        Small Commands
+
+==============================
 
 Update-Profile - Checks for profile updates from a remote repository and updates if necessary.
 
@@ -493,44 +519,9 @@ cpy <text> - Copies the specified text to the clipboard.
 
 pst - Retrieves text from the clipboard.
 
-Use 'Show-Help' to display this help message.
 "@
 }
-Write-Host "Use 'Show-Help' to display help"
-
-# Help Function
-function Show-Commands {
-    @"
-PowerShell User Command Overview
-================================
-
-        Hugo Commands
-================================
-
-hugo-local - Runs a local Hugo Server to develop / write a new page/site
-
-site-update - Updates all modules for a site
-
-         Chocolatey
-===============================
-
-sys-upgrade - Upgrade the Apps on your System
-
-         Komprimieren
-==============================
-
-compact-os - Komprimiert das Betriebssystem
-
-compact-folder - Komprimiert Ordnerinhalt mitsammt Unterordner
-
-            DISM
-==============================
-
-
-
-"@
-}
-Write-Host "Use 'Show-Commands' to display commands"
+Write-Host "Nutze 'Show-Commands' um mögliche Befehle anzuzeigen"
 
 # If so and the current host is a command line, then change to red color
 # as warning to user that they are operating in an elevated context
