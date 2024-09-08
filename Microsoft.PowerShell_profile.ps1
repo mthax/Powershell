@@ -499,7 +499,7 @@ Use 'Show-Help' to display this help message.
 Write-Host "Use 'Show-Help' to display help"
 
 # Help Function
-function Show-Command {
+function Show-Commands {
     @"
 PowerShell User Command Overview
 ================================
