@@ -61,7 +61,6 @@ function Update-PowerShell {
 }
 Update-PowerShell
 
-
 # Admin Check and Prompt Customization
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 function prompt {
@@ -347,29 +346,7 @@ $desktop = $home + "\Desktop"
 $downloads = $home + "\Downloads"
 $modules = $home + "\Documents\WindowsPowerShell\Modules"
 
-# If so and the current host is a command line, then change to red color
-# as warning to user that they are operating in an elevated context
-# Useful shortcuts for traversing directories
-function cd...  { Set-Location ..\.. }
-function cd.... { Set-Location ..\..\.. }
 
-# Compute file hashes - useful for checking successful downloads
-function md5    { Get-FileHash -Algorithm MD5 $args }
-function sha1   { Get-FileHash -Algorithm SHA1 $args }
-function sha256 { Get-FileHash -Algorithm SHA256 $args }
-
-# Does the the rough equivalent of dir /s /b. For example, dirs *.png is dir /s /b *.png
-function dirs
-{
-    if ($args.Count -gt 0)
-    {
-        Get-ChildItem -Recurse -Include "$args" | Foreach-Object FullName
-    }
-    else
-    {
-        Get-ChildItem -Recurse | Foreach-Object FullName
-    }
-}
 
 # Simple function to start a new elevated process. If arguments are supplied then
 # a single command is started with admin rights; if not then a new admin instance
@@ -520,3 +497,40 @@ Use 'Show-Help' to display this help message.
 "@
 }
 Write-Host "Use 'Show-Help' to display help"
+
+# If so and the current host is a command line, then change to red color
+# as warning to user that they are operating in an elevated context
+# Useful shortcuts for traversing directories
+function cd...  { Set-Location ..\.. }
+function cd.... { Set-Location ..\..\.. }
+
+# Compute file hashes - useful for checking successful downloads
+function md5    { Get-FileHash -Algorithm MD5 $args }
+function sha1   { Get-FileHash -Algorithm SHA1 $args }
+function sha256 { Get-FileHash -Algorithm SHA256 $args }
+
+# Does the the rough equivalent of dir /s /b. For example, dirs *.png is dir /s /b *.png
+function dirs
+{
+    if ($args.Count -gt 0)
+    {
+        Get-ChildItem -Recurse -Include "$args" | Foreach-Object FullName
+    }
+    else
+    {
+        Get-ChildItem -Recurse | Foreach-Object FullName
+    }
+}
+
+# Work on local Hugo Site
+function hugo-local {
+    hugo server --logLevel info --renderToMemory --navigateToChanged --disableFastRender -D -F --gc
+}
+
+function site-update {
+    hugo mod get -u
+}
+
+function sys-upgrade {
+    choco upgrade all -y
+}
