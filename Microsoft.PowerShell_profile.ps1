@@ -334,12 +334,6 @@ Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
 Set-Alias vscode "C:\Program Files\Microsoft VS Code\Code.exe"
 Set-Alias vsstudio "C:\Program Files\Microsoft VS Code\Code.exe"
 
-$documents = $home + "\Documents"
-$desktop = $home + "\Desktop"
-$downloads = $home + "\Downloads"
-$modules = $home + "\Documents\WindowsPowerShell\Modules"
-
-
 
 # Simple function to start a new elevated process. If arguments are supplied then
 # a single command is started with admin rights; if not then a new admin instance
