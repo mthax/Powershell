@@ -2,7 +2,7 @@ Install-Module oh-my-posh -Scope CurrentUser
 oh-my-posh init pwsh --config 'C:\Program Files (x86)\oh-my-posh\themes\powerlevel10k_rainbow.omp.json' | Invoke-Expression
 
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
-    [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'true', [System.EnvironmentVariableTarget]::Machine)
+    [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'false', [System.EnvironmentVariableTarget]::Machine)
 }
 
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
