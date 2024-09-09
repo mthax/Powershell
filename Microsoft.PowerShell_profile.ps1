@@ -1,4 +1,30 @@
-oh-my-posh init pwsh --config '~\.oh-my-posh\.powerlevel10k_rainbow.omp.json' | Invoke-Expression
+# Get theme from profile.ps1 or use a default theme
+function Get-Theme {
+    if (Test-Path -Path $PROFILE.CurrentUserAllHosts -PathType leaf) {
+        $existingTheme = Select-String -Raw -Path $PROFILE.CurrentUserAllHosts -Pattern "oh-my-posh init pwsh --config"
+        if ($null -ne $existingTheme) {
+            Invoke-Expression $existingTheme
+            return
+        }
+    } else {
+        oh-my-posh init pwsh --config https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/powerlevel10k_rainbow.omp.json | Invoke-Expression
+    }
+}
+
+## Final Line to set prompt
+Get-Theme
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
+} else {
+    Write-Host "zoxide command not found. Attempting to install via winget..."
+    try {
+        winget install -e --id ajeetdsouza.zoxide
+        Write-Host "zoxide installed successfully. Initializing..."
+        Invoke-Expression (& { (zoxide init powershell | Out-String) })
+    } catch {
+        Write-Error "Failed to install zoxide. Error: $_"
+    }
+}
 
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
     [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'false', [System.EnvironmentVariableTarget]::Machine)
