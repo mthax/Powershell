@@ -1,5 +1,7 @@
 oh-my-posh init pwsh --config ~\.oh-my-posh\.powerlevel10k_rainbow.omp.json | Invoke-Expression
 
+Set-PoshPrompt -Theme ~\.oh-my-posh\.powerlevel10k_rainbow.omp.json
+
 if ([bool]([System.Security.Principal.WindowsIdentity]::GetCurrent()).IsSystem) {
     [System.Environment]::SetEnvironmentVariable('POWERSHELL_TELEMETRY_OPTOUT', 'false', [System.EnvironmentVariableTarget]::Machine)
 }
