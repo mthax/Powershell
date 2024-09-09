@@ -298,20 +298,6 @@ $scriptblock = {
 }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock $scriptblock
 
-## Final Line to set prompt
-if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-    Invoke-Expression (& { (zoxide init --cmd cd powershell | Out-String) })
-} else {
-    Write-Host "zoxide command not found. Attempting to install via winget..."
-    try {
-        winget install -e --id ajeetdsouza.zoxide
-        Write-Host "zoxide installed successfully. Initializing..."
-        Invoke-Expression (& { (zoxide init powershell | Out-String) })
-    } catch {
-        Write-Error "Failed to install zoxide. Error: $_"
-    }
-}
-
 $PSSessionOption = New-PSSessionOption -SkipRevocationCheck -SkipCACheck -SkipCNCheck
 
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
